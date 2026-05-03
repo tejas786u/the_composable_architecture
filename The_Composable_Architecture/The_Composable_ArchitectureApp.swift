@@ -6,12 +6,18 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 @main
 struct The_Composable_ArchitectureApp: App {
+    static let store = Store(initialState: CounterFeature.State()) {
+        CounterFeature()
+            ._printChanges()
+    }
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(store: The_Composable_ArchitectureApp.store)
         }
     }
 }
